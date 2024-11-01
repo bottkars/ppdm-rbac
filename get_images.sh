@@ -4,7 +4,7 @@ VELERO=v1.11.1
 DOCKER_SOURCE=docker.io
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
 PPDM_RELEASE=19.16.0
-for i in $(seq 11,21);
+for i in {11,21};
 do
 PPDM_BUILD=${PPDM_RELEASE}-$i
     podman pull ${DOCKER_SOURCE}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} 

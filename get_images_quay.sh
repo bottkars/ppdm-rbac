@@ -5,7 +5,7 @@ PPDM_RELEASE=19.18.0
 
 DOCKER_SOURCE=quay.io/delldps
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
-for i in $(seq 14 14};
+for i in $(seq 14 14);
 do
 PPDM_BUILD=${PPDM_RELEASE}-$i
     podman pull ${DOCKER_SOURCE}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} 

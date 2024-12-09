@@ -6,8 +6,8 @@ PPDM_RELEASE=19.18.0
 DOCKER_SOURCE=docker.io
 DOCKER_TARGET=quay.io/delldps
 
-i=14
-
+for i in $(seq 14 14);
+do
     PPDM_BUILD=${PPDM_RELEASE}-$i
     echo "Pulling Images for ${PPDM_BUILD}"
     podman pull ${DOCKER_SOURCE}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} 
@@ -17,7 +17,7 @@ i=14
     podman push ${DOCKER_SOURCE}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} ${DOCKER_TARGET}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} 
     podman push ${DOCKER_SOURCE}/dellemc/powerprotect-cproxy:${PPDM_BUILD} ${DOCKER_TARGET}/dellemc/powerprotect-cproxy:${PPDM_BUILD} 
     podman push ${DOCKER_SOURCE}/dellemc/powerprotect-velero-dd:${PPDM_BUILD} ${DOCKER_TARGET}/dellemc/powerprotect-velero-dd:${PPDM_BUILD} 
-
+done
 
 echo "Pulling Velero Images"
 podman pull ${DOCKER_SOURCE}/velero/velero:${VELERO} 

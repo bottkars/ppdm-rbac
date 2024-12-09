@@ -1,8 +1,8 @@
 VELERO_PLUGIN=v1.5.1
 BACKUP_DRIVER=v1.5.1
 VELERO=v1.11.1
-DOCKER_SOURCE=docker.io
-DOCKER_TARGET=quay.io/delldps
+DOCKER_SOURCE=quay.io/delldps
+DOCKER_TARGET=<<customer registry>>
 PPDM_RELEASE=19.16.0
 for i in {11,15,21};
 do

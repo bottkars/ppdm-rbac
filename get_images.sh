@@ -3,8 +3,8 @@ BACKUP_DRIVER=v1.5.3
 VELERO=v1.12.1
 PPDM_RELEASE=19.18.0
 
-DOCKER_SOURCE=harbor.pks.home.labbuildr.com/docker.io
-DOCKER_TARGET=harbor.pks.home.labbuildr.com
+DOCKER_SOURCE=docker.io
+DOCKER_TARGET=quay.io/delldps
 
 i=14
 

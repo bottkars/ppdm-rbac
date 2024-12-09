@@ -1,10 +1,12 @@
 VELERO_PLUGIN=v1.5.3
 BACKUP_DRIVER=v1.5.3
 VELERO=v1.12.1
+PPDM_RELEASE=19.17.0
+
 DOCKER_SOURCE=docker.io
 DOCKER_TARGET=quay.io/delldps
-PPDM_RELEASE=19.17.0
-for i in {10,18};
+
+for i in {10,18,23};
 do
     PPDM_BUILD=${PPDM_RELEASE}-$i
     echo "Pulling Images for ${PPDM_BUILD}"

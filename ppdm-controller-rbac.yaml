@@ -117,7 +117,7 @@ rules:
   - apiGroups: [ "volumegroup.storage.dell.com" ]
     resources: [ "dellcsivolumegroupsnapshots" ]
     verbs: [ "get", "list", "watch", "create", "update", "patch", "delete", "deletecollection" ]
-  - apiGroups: [ "virtualmachines.kubevirt.io" ]
+  - apiGroups: [ "kubevirt.io" ]
     resources: [ '*' ]
     verbs: [ '*' ]
 ---

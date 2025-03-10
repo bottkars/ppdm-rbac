@@ -6,7 +6,7 @@ PPDM_RELEASE=19.18.0
 DOCKER_SOURCE=docker.io
 DOCKER_TARGET=quay.io/delldps
 
-for i in $(seq 14 14);
+for i in {14,23};
 do
     PPDM_BUILD=${PPDM_RELEASE}-$i
     echo "Pulling Images for ${PPDM_BUILD}"

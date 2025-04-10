@@ -3,8 +3,10 @@ BACKUP_DRIVER=v1.5.3
 VELERO=v1.12.1
 # Example with docker proxy
 # DOCKER_SOURCE=harbor.pks.home.labbuildr.com/docker.io
-# example with Docker
-DOCKER_SOURCE=quay.io/delldps
+# example with images from quay.io
+# DOCKER_SOURCE=quay.io/delldps
+# example with images from docker.io
+
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
 PPDM_RELEASE=19.19.0
 for ((i = 15 ; i < 16 ; i++ ));

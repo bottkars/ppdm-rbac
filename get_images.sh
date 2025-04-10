@@ -1,7 +1,10 @@
 VELERO_PLUGIN=v1.5.3
 BACKUP_DRIVER=v1.5.3
 VELERO=v1.12.1
-DOCKER_SOURCE=harbor.pks.home.labbuildr.com/docker.io
+# Example with docker proxy
+# DOCKER_SOURCE=harbor.pks.home.labbuildr.com/docker.io
+# example with Docker
+DOCKER_SOURCE=quai.io/delldps
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
 PPDM_RELEASE=19.19.0
 for i in {15};

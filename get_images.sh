@@ -6,7 +6,7 @@ VELERO=v1.12.1
 # example with images from quay.io
 # DOCKER_SOURCE=quay.io/delldps
 # example with images from docker.io
-
+DOCKER_SOURCE=docker.io
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
 PPDM_RELEASE=19.19.0
 for ((i = 15 ; i < 16 ; i++ ));
@@ -23,10 +23,12 @@ done
 
 
 podman pull ${DOCKER_SOURCE}/velero/velero:${VELERO}
+# next 2 only needed in vsphere environments
 podman pull ${DOCKER_SOURCE}/vsphereveleroplugin/velero-plugin-for-vsphere:${VELERO_PLUGIN}
 podman pull ${DOCKER_SOURCE}/vsphereveleroplugin/backup-driver:${BACKUP_DRIVER} 
 
-
+# next not required for OADP
 podman push ${DOCKER_SOURCE}/velero/velero:${VELERO} ${DOCKER_TARGET}/velero/velero:${VELERO}
+# next 2 only needed in vsphere environments
 podman push ${DOCKER_SOURCE}/vsphereveleroplugin/velero-plugin-for-vsphere:${VELERO_PLUGIN} ${DOCKER_TARGET}/vsphereveleroplugin/velero-plugin-for-vsphere:${VELERO_PLUGIN}
 podman push ${DOCKER_SOURCE}/vsphereveleroplugin/backup-driver:${BACKUP_DRIVER}  ${DOCKER_TARGET}/vsphereveleroplugin/backup-driver:${BACKUP_DRIVER}

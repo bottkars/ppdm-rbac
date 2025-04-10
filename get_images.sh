@@ -7,7 +7,7 @@ VELERO=v1.12.1
 DOCKER_SOURCE=quai.io/delldps
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
 PPDM_RELEASE=19.19.0
-for ((i = 15 ; i < 15 ; i++ ));
+for ((i = 14 ; i < 15 ; i++ ));
 do
 PPDM_BUILD=${PPDM_RELEASE}-$i
     podman pull ${DOCKER_SOURCE}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} 

@@ -4,7 +4,7 @@ VELERO=v1.12.1
 # Example with docker proxy
 # DOCKER_SOURCE=harbor.pks.home.labbuildr.com/docker.io
 # example with Docker
-DOCKER_SOURCE=quai.io/delldps
+DOCKER_SOURCE=quay.io/delldps
 DOCKER_TARGET=harbor.pks.home.labbuildr.com
 PPDM_RELEASE=19.19.0
 for ((i = 15 ; i < 16 ; i++ ));

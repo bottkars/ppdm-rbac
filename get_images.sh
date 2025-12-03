@@ -1,10 +1,11 @@
+#!/bin/bash
 VELERO_PLUGIN=v1.5.4
 BACKUP_DRIVER=v1.5.4
 VELERO=v1.14.1
 DOCKER_SOURCE=docker.io
 DOCKER_TARGET=quay.io/delldps
-PPDM_RELEASE=19.21.0
-for i in {05,08};
+PPDM_RELEASE=19.22.0
+for i in {16..16..1};
 do
 PPDM_BUILD=${PPDM_RELEASE}-$i
     podman pull ${DOCKER_SOURCE}/dellemc/powerprotect-k8s-controller:${PPDM_BUILD} --tls-verify=false 

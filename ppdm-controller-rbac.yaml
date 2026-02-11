@@ -110,10 +110,10 @@ rules:
       - clusterserviceversions
       - subscriptions
       - operatorgroups
-    verbs: ["create", "update", "get", "list"]
+    verbs: ["create", "update", "get", "list", "patch"]
   - apiGroups: [ "oadp.openshift.io" ]
     resources: [ "dataprotectionapplications", "backuplocations"  ]
-    verbs: [ "create", "get", "list" ]
+    verbs: [ "create", "get", "list", "update", "patch" ]
   - apiGroups: [ "volumegroup.storage.dell.com" ]
     resources: [ "dellcsivolumegroupsnapshots" ]
     verbs: [ "get", "list", "watch", "create", "update", "patch", "delete", "deletecollection" ]

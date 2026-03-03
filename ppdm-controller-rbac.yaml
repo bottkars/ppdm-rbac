@@ -35,7 +35,7 @@ rules:
     verbs: [ "create","get","delete", "patch" ]
   - apiGroups: [ "" ]
     resources: [ "events" ]
-    verbs: [ "get", "list" ]
+    verbs: [ "get", "list", "create", "patch" ]
   - apiGroups: [ "" ]
     resources: [ "serviceaccounts" ]
     verbs: [ "create", "get", "patch" ] 
@@ -107,10 +107,14 @@ rules:
     verbs: ["create", "delete", "get"]
   - apiGroups: ["operators.coreos.com", "oadp.openshift.io"]
     resources:
-      - clusterserviceversions
       - subscriptions
       - operatorgroups
     verbs: ["create", "update", "get", "list", "patch"]
+  - apiGroups: ["operators.coreos.com", "oadp.openshift.io"]
+    resources:
+      - clusterserviceversions
+      - installplans
+    verbs: ["watch", "patch", "update", "get", "list"]
   - apiGroups: [ "oadp.openshift.io" ]
     resources: [ "dataprotectionapplications", "backuplocations"  ]
     verbs: [ "create", "get", "list", "update", "patch" ]
@@ -129,6 +133,15 @@ rules:
   - apiGroups: [ "management.cattle.io" ]
     resources: [ 'projects' ]
     verbs: [ "manage-namespaces", "updatepsa" ]
+  - apiGroups: ["batch"]
+    resources: ["jobs", "jobs/status"]
+    verbs: ["get", "list", "watch", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["cronjobs", "cronjobs/status"]
+    verbs: ["get", "list", "watch", "patch", "update"]
+  - apiGroups: [ "" ]
+    resources: [ "nodes" ]
+    verbs: [ "list" ]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1

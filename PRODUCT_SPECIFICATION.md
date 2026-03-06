@@ -199,7 +199,8 @@ kind: ClusterRoleBinding
 metadata:
   name: powerprotect:cluster-role-binding
   annotations:
-    powerprotect.dell.com/version: "feature/new-permissions"
+    powerprotect.dell.com/version: "20.1.0.0-1-SNAPSHOT"
+    powerprotect.dell.com/feature: "new-permissions"
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
 subjects:

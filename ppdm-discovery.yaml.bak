@@ -4,16 +4,12 @@ metadata:
   name: powerprotect
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
   name: ppdm-custom-config-resources
   namespace: powerprotect
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 data:
   Namespace: powerprotect
   ClusterRoleBinding: powerprotect:cluster-role-binding
@@ -26,8 +22,6 @@ metadata:
   namespace: powerprotect
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -35,8 +29,6 @@ metadata:
   name: powerprotect:discovery-clusterrole
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 rules:
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings"]
@@ -51,7 +43,7 @@ rules:
     verbs: ["get", "list"]
   - apiGroups: [""]
     resources: ["pods"]
-    verbs: ["get", "list", "watch"]
+    verbs: ["get", "list","watch"]
   - apiGroups: ["apps"]
     resources: ["deployments"]
     verbs: ["get", "list", "watch"]
@@ -80,8 +72,6 @@ metadata:
   name: powerprotect:discovery-cluster-rolebinding
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 subjects:
   - kind: ServiceAccount
     name: ppdm-discovery-serviceaccount
@@ -98,28 +88,26 @@ metadata:
   namespace: powerprotect
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 rules:
   - apiGroups: [""]
     resources: ["namespaces"]
-    verbs: ["create", "update", "delete", "patch", "get", "list", "watch"]
+    verbs: ["create", "update", "delete", "patch", "get", "list","watch"]
     resourceNames: ["powerprotect"]
   - apiGroups: [""]
     resources: ["pods"]
-    verbs: ["create", "update", "delete", "patch", "get", "list", "watch"]
+    verbs: ["create", "update", "delete", "patch", "get", "list","watch"]
   - apiGroups: [""]
     resources: ["pods/log"]
     verbs: ["get"]
   - apiGroups: ["apps"]
     resources: ["deployments"]
-    verbs: ["create", "update", "delete", "patch", "get", "list", "watch"]
+    verbs: ["create", "update", "delete", "patch", "get", "list","watch"]
   - apiGroups: [""]
     resources: ["persistentvolumeclaims"]
-    verbs: ["create", "update", "delete", "patch", "get", "list", "watch"]
+    verbs: ["create", "update", "delete", "patch", "get", "list","watch"]
   - apiGroups: [""]
     resources: ["persistentvolumes"]
-    verbs: ["create", "update", "delete", "patch", "get", "list", "watch"]
+    verbs: ["create", "update", "delete", "patch", "get", "list","watch"]
   - apiGroups: ["storage.k8s.io"]
     resources: ["storageclasses"]
     verbs: ["get", "list"]
@@ -128,7 +116,7 @@ rules:
     verbs: ["create", "delete", "get", "list", "update", "patch"]
   - apiGroups: [""]
     resources: ["configmaps"]
-    verbs: ["create", "update", "delete", "patch", "get", "list", "watch"]
+    verbs: ["create", "update", "delete", "patch", "get", "list","watch"]
   - apiGroups: ["powerprotect.dell.com"]
     resources: ['*']
     verbs: ['*']
@@ -148,13 +136,11 @@ metadata:
   namespace: powerprotect
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
-  annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
 roleRef:
   kind: Role
   name: ppdm-discovery-role
   apiGroup: rbac.authorization.k8s.io
 subjects:
-  - kind: ServiceAccount
-    name: ppdm-discovery-serviceaccount
-    namespace: powerprotect
+- kind: ServiceAccount
+  name: ppdm-discovery-serviceaccount
+  namespace: powerprotect

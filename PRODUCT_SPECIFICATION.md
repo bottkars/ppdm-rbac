@@ -74,8 +74,20 @@ The PPDM RBAC system delivers fine-grained access control for PPDM services in K
 
 #### FR-002: Version Annotation
 - The system SHALL automatically annotate all Kubernetes resources with version information
-- The system SHALL use the format `powerprotect.dell.com/version::{branch_name}`
-- The system SHALL extract version information from git branch names
+- The system SHALL use the annotation key `powerprotect.dell.com/version`
+- The system SHALL extract version value from git branch names
+- The system SHALL apply annotations to all resources with `metadata` sections
+
+**Example Annotation Format:**
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ppdm-serviceaccount
+  namespace: powerprotect
+  annotations:
+    powerprotect.dell.com/version: "20.1.0.0-1-SNAPSHOT"
+```
 
 #### FR-003: Distribution
 - The system SHALL upload annotated manifests to OCI registry
@@ -135,6 +147,20 @@ make setup
 make validate
 make annotate
 make upload
+
+# Example: Annotated RBAC manifest
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: powerprotect:cluster-role
+  annotations:
+    powerprotect.dell.com/version: "20.1.0.0-1-SNAPSHOT"
+  labels:
+    app.kubernetes.io/part-of: powerprotect.dell.com
+rules:
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["create", "delete", "get", "list", "watch"]
 ```
 
 ### Scenario 2: Production Deployment
@@ -145,6 +171,16 @@ oc apply -f ppdm-controller-rbac.yaml
 
 # Method 2: GitHub Raw Access
 oc apply -f https://raw.githubusercontent.com/dell-dps/ppdm-rbac/production/ppdm-controller-rbac.yaml
+
+# Example: Applied RBAC with version annotation
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: powerprotect
+  annotations:
+    powerprotect.dell.com/version: "production"
+  labels:
+    app.kubernetes.io/part-of: powerprotect.dell.com
 ```
 
 ### Scenario 3: Multi-branch Management
@@ -156,6 +192,24 @@ make all  # Creates versioned artifacts for feature branch
 # Production release
 git checkout main
 make all  # Creates production artifacts
+
+# Example: Feature branch annotation
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: powerprotect:cluster-role-binding
+  annotations:
+    powerprotect.dell.com/version: "feature/new-permissions"
+  labels:
+    app.kubernetes.io/part-of: powerprotect.dell.com
+subjects:
+  - kind: ServiceAccount
+    name: ppdm-serviceaccount
+    namespace: powerprotect
+roleRef:
+  kind: ClusterRole
+  name: powerprotect:cluster-role
+  apiGroup: rbac.authorization.k8s.io
 ```
 
 ## Quality Assurance

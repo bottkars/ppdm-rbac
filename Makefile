@@ -29,6 +29,20 @@ annotate:
 	done
 	@echo "Annotation complete."
 
+# Add version and feature annotations to all YAML files
+.PHONY: annotate-feature
+annotate-feature:
+	@if [ -z "$(FEATURE)" ]; then \
+		echo "Usage: make annotate-feature FEATURE=<feature-name>"; \
+		exit 1; \
+	fi
+	@echo "Adding version annotation $(VERSION) and feature annotation $(FEATURE) to RBAC files..."
+	@for file in $(RBAC_FILES); do \
+		echo "Processing $$file..."; \
+		./scripts/annotate.sh $$file "$(VERSION)" "$(FEATURE)"; \
+	done
+	@echo "Annotation complete."
+
 # Upload YAML files to OCI registry
 .PHONY: upload
 upload:
@@ -64,13 +78,14 @@ clean:
 .PHONY: help
 help:
 	@echo "Available targets:"
-	@echo "  all      - Run annotate and upload"
-	@echo "  annotate - Add version annotations to YAML files"
-	@echo "  upload   - Upload YAML files to OCI registry"
-	@echo "  validate - Validate YAML syntax"
-	@echo "  clean    - Clean up temporary files"
-	@echo "  branch   - Show current branch and registry info"
-	@echo "  help     - Show this help message"
+	@echo "  all             - Run annotate and upload"
+	@echo "  annotate        - Add version annotations to YAML files"
+	@echo "  annotate-feature - Add version and feature annotations to YAML files"
+	@echo "  upload          - Upload YAML files to OCI registry"
+	@echo "  validate        - Validate YAML syntax"
+	@echo "  clean           - Clean up temporary files"
+	@echo "  branch          - Show current branch and registry info"
+	@echo "  help            - Show this help message"
 
 # Create required directories and scripts
 .PHONY: setup

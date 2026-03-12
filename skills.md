@@ -46,6 +46,25 @@ oras login quay.io
 docker login quay.io
 ```
 
+## Annotations
+
+### Version Annotation
+All resources receive version annotation:
+```yaml
+metadata:
+  annotations:
+    powerprotect.dell.com/version: "20.1.0.0-1-SNAPSHOT"
+```
+
+### Feature Annotation (Optional)
+For feature-specific tracking:
+```yaml
+metadata:
+  annotations:
+    powerprotect.dell.com/version: "20.1.0.0-1-SNAPSHOT"
+    powerprotect.dell.com/feature: "new-permissions"
+```
+
 ## Applying RBAC Files
 
 After uploading to OCI registry, files can be applied using either method:

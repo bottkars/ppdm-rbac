@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -13,7 +13,7 @@ metadata:
   name: ppdm-custom-config-resources
   namespace: powerprotect
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 data:
   Namespace: powerprotect
   ClusterRoleBinding: powerprotect:cluster-role-binding
@@ -27,7 +27,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -36,7 +36,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 rules:
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings"]
@@ -81,7 +81,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 subjects:
   - kind: ServiceAccount
     name: ppdm-discovery-serviceaccount
@@ -99,7 +99,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 rules:
   - apiGroups: [""]
     resources: ["namespaces"]
@@ -149,7 +149,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.0-1-SNAPSHOT
+    powerprotect.dell.com/version: 20.1.0.0-8
 roleRef:
   kind: Role
   name: ppdm-discovery-role

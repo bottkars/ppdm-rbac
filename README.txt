@@ -73,8 +73,8 @@ $ kubectl -n velero-ppdm rollout status deploy velero
 deployment "velero" successfully rolled out
 ```
 
-In a vSphere setup, there will also be the `backup-driver` Velero plugin
-workload.
+In a vSphere setup, the `backup-driver` Velero plugin workload is a legacy component
+that is cleaned up during upgrade to CSI-only backups.
 
 Make sure the Velero pod is running:
 

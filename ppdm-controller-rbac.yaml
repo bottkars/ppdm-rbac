@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.2
+    powerprotect.dell.com/version: 20.2.0.0
 ---
 kind: ServiceAccount
 apiVersion: v1
@@ -15,7 +15,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.2
+    powerprotect.dell.com/version: 20.2.0.0
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -24,7 +24,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.2
+    powerprotect.dell.com/version: 20.2.0.0
 rules:
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings"]
@@ -99,15 +99,6 @@ rules:
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["create", "get", "list", "patch", "update", "watch", "delete"]
-  - apiGroups: ["backupdriver.cnsdp.vmware.com"]
-    resources: ["snapshots"]
-    verbs: ["create", "get", "list", "patch", "update", "watch", "delete"]
-  - apiGroups: ["backupdriver.cnsdp.vmware.com"]
-    resources: ["deletesnapshots"]
-    verbs: ["create", "get", "list", "patch", "update", "watch", "delete"]
-  - apiGroups: ["backupdriver.cnsdp.vmware.com"]
-    resources: ["deletesnapshots/status"]
-    verbs: ["create", "get", "list", "patch", "update", "watch", "delete"]
   - apiGroups: ["networking.k8s.io"]
     resources: ["networkpolicies"]
     verbs: ["create", "delete", "get"]
@@ -156,7 +147,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.2
+    powerprotect.dell.com/version: 20.2.0.0
 subjects:
   - kind: ServiceAccount
     name: ppdm-serviceaccount
@@ -174,7 +165,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.2
+    powerprotect.dell.com/version: 20.2.0.0
 rules:
   - apiGroups:
       - '*'
@@ -190,7 +181,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.1.0.2
+    powerprotect.dell.com/version: 20.2.0.0
 roleRef:
   kind: Role
   name: ppdmrole

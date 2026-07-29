@@ -83,3 +83,50 @@ $ kubectl -n velero-ppdm get po
 NAME                             READY   STATUS    RESTARTS     AGE
 velero-764cc9846d-2r786          1/1     Running   1 (9d ago)   13d
 ```
+
+---
+
+## Alternative: OIDC-Based Authentication
+
+Instead of a service account token, PPDM can authenticate using OIDC refresh
+token-based credentials. In this case the discovery service account token is
+not required, but the K8s API server must be configured to accept tokens from
+your OIDC provider.
+
+Set up the PPDM `discovery` RBAC as before (required regardless of auth method):
+
+```sh
+kubectl apply -f ppdm-discovery.yaml
+kubectl apply -f ppdm-controller-rbac.yaml
+```
+
+Then bind the OIDC subject to the discovery roles using `ppdm-discovery-oidc-binding.yaml`.
+Set `PPDM_SUBJECT_KIND` (`User` or `Group`) and `PPDM_SUBJECT_NAME` to the
+value that appears in your OIDC token claims:
+
+```sh
+PPDM_SUBJECT_KIND="Group" PPDM_SUBJECT_NAME="<your-oidc-group>" envsubst < ppdm-discovery-oidc-binding.yaml | kubectl apply -f -
+```
+
+For example, if your OIDC provider issues tokens with `"groups": ["ppdm-admins"]`:
+
+```sh
+PPDM_SUBJECT_KIND="Group" PPDM_SUBJECT_NAME="ppdm-admins" envsubst < ppdm-discovery-oidc-binding.yaml | kubectl apply -f -
+```
+
+Retrieve the cluster API endpoint:
+
+```sh
+kubectl cluster-info
+```
+
+In the PowerProtect Data Manager UI, add the Kubernetes cluster as an `Asset
+Source` and select `OIDC` as the authentication method, with the following
+properties:
+
+* `FQDN/IP` - Cluster API endpoint retrieved using the `kubectl cluster-info`
+command
+* `Authentication URL` - Full OIDC token endpoint URL (e.g.
+`https://keycloak.example.com:8443/realms/kubernetes/protocol/openid-connect/token`)
+* `Client ID` - OIDC client identifier registered with the provider
+* `Refresh Token` - A valid OIDC refresh token issued by the provider

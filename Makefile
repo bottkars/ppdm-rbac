@@ -6,7 +6,7 @@ REGISTRY := quay.io/delldps/ppdm-rbac
 OCI_REGISTRY := oci://dell-dps/ppdm-rbac
 
 # YAML files to process
-RBAC_FILES := ppdm-controller-rbac.yaml ppdm-discovery.yaml
+RBAC_FILES := ppdm-controller-rbac.yaml ppdm-discovery.yaml ppdm-discovery-oidc-binding.yaml
 
 # Default target
 .PHONY: all

@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.0
+    powerprotect.dell.com/version: 20.3.0.10
 subjects:
   - kind: ${PPDM_SUBJECT_KIND}
     name: ${PPDM_SUBJECT_NAME}
@@ -23,7 +23,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.0
+    powerprotect.dell.com/version: 20.3.0.10
 roleRef:
   kind: Role
   name: ppdm-discovery-role

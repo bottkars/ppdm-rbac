@@ -111,7 +111,7 @@ rules:
     resources:
       - clusterserviceversions
       - installplans
-    verbs: ["watch", "patch", "update", "get", "list"]
+    verbs: ["create","watch", "patch", "update", "get", "list"]
   - apiGroups: ["oadp.openshift.io"]
     resources: ["dataprotectionapplications", "backuplocations"]
     verbs: ["create", "get", "list", "update", "patch"]

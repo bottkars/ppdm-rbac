@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.10
+    powerprotect.dell.com/version: 20.4.0.0
 ---
 kind: ServiceAccount
 apiVersion: v1
@@ -15,7 +15,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.10
+    powerprotect.dell.com/version: 20.4.0.0
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -24,7 +24,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.10
+    powerprotect.dell.com/version: 20.4.0.0
 rules:
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings"]
@@ -111,7 +111,7 @@ rules:
     resources:
       - clusterserviceversions
       - installplans
-    verbs: ["create","watch", "patch", "update", "get", "list"]
+    verbs: ["watch", "patch", "update", "get", "list"]
   - apiGroups: ["oadp.openshift.io"]
     resources: ["dataprotectionapplications", "backuplocations"]
     verbs: ["create", "get", "list", "update", "patch"]
@@ -147,7 +147,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.10
+    powerprotect.dell.com/version: 20.4.0.0
 subjects:
   - kind: ServiceAccount
     name: ppdm-serviceaccount
@@ -165,7 +165,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.10
+    powerprotect.dell.com/version: 20.4.0.0
 rules:
   - apiGroups:
       - '*'
@@ -181,7 +181,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: powerprotect.dell.com
   annotations:
-    powerprotect.dell.com/version: 20.3.0.10
+    powerprotect.dell.com/version: 20.4.0.0
 roleRef:
   kind: Role
   name: ppdmrole

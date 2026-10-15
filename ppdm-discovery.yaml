@@ -74,7 +74,7 @@ rules:
     resources: ["clusterversions"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["kubevirt.io"]
-    resources: ["virtualmachines", "virtualmachineinstances"]
+    resources: ["virtualmachines", "virtualmachineinstances", "kubevirts"]
     verbs: ["get", "list"]
 ---
 kind: ClusterRoleBinding
